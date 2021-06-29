@@ -24,9 +24,9 @@ import { ShellScriptAction } from '@aws-cdk/pipelines';
         sourceAction: new codepipeline_actions.GitHubSourceAction({
         actionName: 'GitHub',
         output: sourceArtifact,
-        oauthToken: SecretValue.secretsManager('github-token'),
-        owner: 'GITHUB-USER',
-        repo: 'REPO',
+        oauthToken: SecretValue.secretsManager('github-cdk-pipelines-token'),
+        owner: 'baltasarromero',
+        repo: 'cdk-pipelines-demo-deploy',
         branch: 'main'
       }),
 
