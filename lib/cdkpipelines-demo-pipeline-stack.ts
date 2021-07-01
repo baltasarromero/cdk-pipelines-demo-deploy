@@ -24,9 +24,9 @@ import { ShellScriptAction } from '@aws-cdk/pipelines';
         sourceAction: new codepipeline_actions.GitHubSourceAction({
         actionName: 'GitHub',
         output: sourceArtifact,
-        oauthToken: SecretValue.secretsManager('github-cdk-pipelines-token'),
-        owner: 'baltasarromero',
-        repo: 'cdk-pipelines-demo-deploy',
+        oauthToken: SecretValue.secretsManager('github-token'),
+        owner: 'GITHUB-USER',
+        repo: 'REPO',
         branch: 'main'
       }),
 
@@ -41,7 +41,7 @@ import { ShellScriptAction } from '@aws-cdk/pipelines';
    });
    // This is where we add the application stages
    const preprod = new CdkpipelinesDemoStage(this, 'PreProd', {
-    env: { account: '020467741606', region: 'us-east-1' }
+    env: { account: 'ACCOUNT-NUMBER', region: 'REGION' }
   });
 
   // put validations for the stages 
@@ -61,7 +61,7 @@ import { ShellScriptAction } from '@aws-cdk/pipelines';
   }));
 
   pipeline.addApplicationStage(new CdkpipelinesDemoStage(this, 'Prod', {
-    env: { account: '020467741606', region: 'us-east-1' }
+    env: { account: 'ACCOUNT-NUMBER', region: 'REGION' }
   }));
   }
 }
